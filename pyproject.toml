@@ -1,0 +1,14 @@
+[project]
+name = "ComfyUI-PromptWrapper"
+description = "ComfyUI nodes for PromptWrapper, Mainly for prompt word translation, Chinese translation into English or English translation into Chinese."
+version = "1.0.0"
+license = {file = "LICENSE"}
+
+[project.urls]
+Repository = "https://github.com/clouddreamfly/ComfyUI-PromptWrapper"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = "clouddreamfly"
+DisplayName = "ComfyUI-PromptWrapper"
+Icon = ""

@@ -23,13 +23,13 @@ class JsonlDataset(Dataset):
         sample_datas = []
         with open(path, 'r', encoding='utf-8') as fp:
             for line_num, line in enumerate(fp, 1):
-                if line != "":
+                if line != "" and line != "\n" and line != "\r\n":
                     try:
                         data = json.loads(line.strip())
                         sample_datas.append(data)
                     except:
                         print("jsonl file parse error:", path)
-                        break
+                        continue
         
         return sample_datas
 

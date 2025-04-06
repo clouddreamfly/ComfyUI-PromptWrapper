@@ -578,12 +578,24 @@ class BuildPromptManager:
         shoes_weight=0,
         hat=EMPTY_OPTION,
         hat_weight=0,
-        neck_decoration=EMPTY_OPTION,
-        neck_decoration_weight=0,
-        waist_decoration=EMPTY_OPTION,
-        waist_decoration_weight=0,
         gloves=EMPTY_OPTION,
         gloves_weight=0,
+        head_decoration=EMPTY_OPTION,
+        head_decoration_weight=0,
+        neck_decoration=EMPTY_OPTION,
+        neck_decoration_weight=0,
+        chest_decoration=EMPTY_OPTION,
+        chest_decoration_weight=0,
+        waist_decoration=EMPTY_OPTION,
+        waist_decoration_weight=0,
+        arms_decoration=EMPTY_OPTION,
+        arms_decoration_weight=0,
+        hands_decoration=EMPTY_OPTION,
+        hands_decoration_weight=0,
+        legs_decoration=EMPTY_OPTION,
+        legs_decoration_weight=0,
+        feet_decoration=EMPTY_OPTION,
+        feet_decoration_weight=0,
         seed=0
     ):
 
@@ -649,11 +661,29 @@ class BuildPromptManager:
             elif hat != EMPTY_OPTION:
                 prompt_words.append(buildPromptWeight(hat, hat_weight))
 
+        if gloves_weight > 0:
+            if gloves == RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.gloves_prompt.choice_prompt(seed), gloves_weight))
+            elif gloves != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(gloves, gloves_weight))
+
+        if head_decoration_weight > 0:
+            if head_decoration == RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.head_decoration_prompt.choice_prompt(seed), head_decoration_weight))
+            elif head_decoration != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(head_decoration, head_decoration_weight))
+
         if neck_decoration_weight > 0:
             if neck_decoration == RANDOM_OPTION:
                 prompt_words.append(buildPromptWeight(self.neck_decoration_prompt.choice_prompt(seed), neck_decoration_weight))
             elif neck_decoration != EMPTY_OPTION:
                 prompt_words.append(buildPromptWeight(neck_decoration, neck_decoration_weight))
+
+        if chest_decoration_weight > 0:
+            if chest_decoration == RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.chest_decoration_prompt.choice_prompt(seed), chest_decoration_weight))
+            elif chest_decoration != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(chest_decoration, chest_decoration_weight))
 
         if waist_decoration_weight > 0:
             if waist_decoration == RANDOM_OPTION:
@@ -661,11 +691,29 @@ class BuildPromptManager:
             elif waist_decoration != EMPTY_OPTION:
                 prompt_words.append(buildPromptWeight(waist_decoration, waist_decoration_weight))
 
-        if gloves_weight > 0:
-            if gloves == RANDOM_OPTION:
-                prompt_words.append(buildPromptWeight(self.gloves_prompt.choice_prompt(seed), gloves_weight))
-            elif gloves != EMPTY_OPTION:
-                prompt_words.append(buildPromptWeight(gloves, gloves_weight))
+        if arms_decoration_weight > 0:
+            if arms_decoration == RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.arms_decoration_prompt.choice_prompt(seed), arms_decoration_weight))
+            elif arms_decoration != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(arms_decoration, arms_decoration_weight))
+
+        if hands_decoration_weight > 0:
+            if hands_decoration == RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.hands_decoration_prompt.choice_prompt(seed), hands_decoration_weight))
+            elif hands_decoration != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(hands_decoration, hands_decoration_weight))
+
+        if legs_decoration_weight > 0:
+            if legs_decoration == RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.legs_decoration_prompt.choice_prompt(seed), legs_decoration_weight))
+            elif legs_decoration != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(legs_decoration, legs_decoration_weight))
+
+        if feet_decoration_weight > 0:
+            if feet_decoration == RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.feet_decoration_prompt.choice_prompt(seed), feet_decoration_weight))
+            elif feet_decoration != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(feet_decoration, feet_decoration_weight))
 
         output_prompt = ""
         if len(prompt_words) > 0:
@@ -680,14 +728,20 @@ class BuildPromptManager:
         pose_weight=1,
         action=EMPTY_OPTION,
         action_weight=0,
-        head_pose=EMPTY_OPTION,
-        head_pose_weight=0,
-        chest_pose=EMPTY_OPTION,
-        chest_pose_weight=0,
-        hand_pose=EMPTY_OPTION,
-        hand_pose_weight=0,
-        leg_pose=EMPTY_OPTION,
-        leg_pose_weight=0,
+        head_action=EMPTY_OPTION,
+        head_action_weight=0,
+        chest_action=EMPTY_OPTION,
+        chest_action_weight=0,
+        waist_action=EMPTY_OPTION,
+        waist_action_weight=0,
+        arms_action=EMPTY_OPTION,
+        arms_action_weight=0,
+        hands_action=EMPTY_OPTION,
+        hands_action_weight=0,
+        legs_action=EMPTY_OPTION,
+        legs_action_weight=0,
+        feet_action=EMPTY_OPTION,
+        feet_action_weight=0,
         seed=0
     ):
 
@@ -705,29 +759,47 @@ class BuildPromptManager:
             elif action != EMPTY_OPTION:
                 prompt_words.append(buildPromptWeight(action, action_weight))
 
-        if head_pose_weight > 0:
-            if head_pose == RANDOM_OPTION:
-                prompt_words.append(buildPromptWeight(self.head_pose_prompt.choice_prompt(seed), head_pose_weight))
-            elif head_pose != EMPTY_OPTION:
-                prompt_words.append(buildPromptWeight(head_pose, head_pose_weight))
+        if head_action_weight > 0:
+            if head_action == RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.head_action_prompt.choice_prompt(seed), head_action_weight))
+            elif head_action != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(head_action, head_action_weight))
 
-        if chest_pose_weight > 0:
-            if chest_pose == RANDOM_OPTION:
-                prompt_words.append(buildPromptWeight(self.chest_pose_prompt.choice_prompt(seed), chest_pose_weight))
-            elif chest_pose != EMPTY_OPTION:
-                prompt_words.append(buildPromptWeight(chest_pose, chest_pose_weight))
+        if chest_action_weight > 0:
+            if chest_action == RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.chest_action_prompt.choice_prompt(seed), chest_action_weight))
+            elif chest_action != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(chest_action, chest_action_weight))
 
-        if hand_pose_weight > 0:
-            if hand_pose == RANDOM_OPTION:
-                prompt_words.append(buildPromptWeight(self.hand_pose_prompt.choice_prompt(seed), hand_pose_weight))
-            elif hand_pose != EMPTY_OPTION:
-                prompt_words.append(buildPromptWeight(hand_pose, hand_pose_weight))
+        if waist_action_weight > 0:
+            if waist_action == RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.waist_action_prompt.choice_prompt(seed), waist_action_weight))
+            elif waist_action != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(waist_action, waist_action_weight))
 
-        if leg_pose_weight > 0:
-            if leg_pose == RANDOM_OPTION:
-                prompt_words.append(buildPromptWeight(self.leg_pose_prompt.choice_prompt(seed), leg_pose_weight))
-            elif leg_pose != EMPTY_OPTION:
-                prompt_words.append(buildPromptWeight(leg_pose, leg_pose_weight))
+        if arms_action_weight > 0:
+            if arms_action == RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.arms_action_prompt.choice_prompt(seed), arms_action_weight))
+            elif arms_action != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(arms_action, arms_action_weight))
+
+        if hands_action_weight > 0:
+            if hands_action == RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.hands_action_prompt.choice_prompt(seed), hands_action_weight))
+            elif hands_action != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(hands_action, hands_action_weight))
+
+        if legs_action_weight > 0:
+            if legs_action == RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.legs_action_prompt.choice_prompt(seed), legs_action_weight))
+            elif legs_action != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(legs_action, legs_action_weight))
+
+        if feet_action_weight > 0:
+            if feet_action == RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.feet_action_prompt.choice_prompt(seed), feet_action_weight))
+            elif feet_action != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(feet_action, feet_action_weight))
 
         output_prompt = ""
         if len(prompt_words) > 0:

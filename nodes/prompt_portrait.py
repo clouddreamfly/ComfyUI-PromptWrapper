@@ -23,9 +23,10 @@ class PortraitPrompt:
                 # 镜头角度权重
                 "lens_angle_weight": ("FLOAT", {
                     "default": 1,
-                    "step": 0.05,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
                     "display": "slider",
                 }),
                 # 国籍1
@@ -41,6 +42,7 @@ class PortraitPrompt:
                     "default": 0.5,
                     "min": 0,
                     "max": 1,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -53,6 +55,7 @@ class PortraitPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -67,9 +70,10 @@ class PortraitPrompt:
                 # 体型类型权重
                 "body_type_weight": ("FLOAT", {
                     "default": 1,
-                    "step": 0.05,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
                     "display": "slider",
                 }),
                 # 脸型
@@ -79,9 +83,10 @@ class PortraitPrompt:
                 # 脸型权重
                 "face_shape_weight": ("FLOAT", {
                     "default": 1,
-                    "step": 0.05,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
                     "display": "slider",
                 }),
                 # 漂亮的脸权重
@@ -89,6 +94,7 @@ class PortraitPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -97,6 +103,7 @@ class PortraitPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -105,6 +112,7 @@ class PortraitPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -113,6 +121,7 @@ class PortraitPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -123,9 +132,10 @@ class PortraitPrompt:
                  # 脸部的表情权重
                 "facial_expression_weight": ("FLOAT", {
                     "default": 1,
-                    "step": 0.05,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
                     "display": "slider",
                 }),
                 # 眼睛形状
@@ -173,6 +183,7 @@ class PortraitPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -346,6 +357,7 @@ class PortraitSkinPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -354,6 +366,7 @@ class PortraitSkinPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -362,6 +375,7 @@ class PortraitSkinPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -370,6 +384,7 @@ class PortraitSkinPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -378,6 +393,7 @@ class PortraitSkinPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -386,6 +402,7 @@ class PortraitSkinPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -394,6 +411,7 @@ class PortraitSkinPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -402,6 +420,7 @@ class PortraitSkinPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -410,6 +429,7 @@ class PortraitSkinPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -418,6 +438,7 @@ class PortraitSkinPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -426,6 +447,7 @@ class PortraitSkinPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -434,6 +456,7 @@ class PortraitSkinPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -442,6 +465,7 @@ class PortraitSkinPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -450,6 +474,7 @@ class PortraitSkinPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -458,6 +483,7 @@ class PortraitSkinPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -466,6 +492,7 @@ class PortraitSkinPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -474,6 +501,7 @@ class PortraitSkinPrompt:
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -590,6 +618,7 @@ class PortraitFashionPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -602,6 +631,7 @@ class PortraitFashionPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -614,6 +644,7 @@ class PortraitFashionPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -626,6 +657,7 @@ class PortraitFashionPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -638,6 +670,7 @@ class PortraitFashionPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -650,6 +683,7 @@ class PortraitFashionPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -662,6 +696,7 @@ class PortraitFashionPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -674,6 +709,7 @@ class PortraitFashionPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -686,6 +722,7 @@ class PortraitFashionPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -698,30 +735,7 @@ class PortraitFashionPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
-                    "step": 0.05,
-                    "display": "slider",
-                }),
-                # 脖子装饰
-                "neck_decoration": (buildOptionList(build_prompt_manager.neck_decoration_prompt.get_dataset()), {
-                    "default": EMPTY_OPTION,
-                }),
-                # 脖子装饰权重
-                "neck_decoration_weight": ("FLOAT", {
-                    "default": 1,
-                    "min": 0,
-                    "max": max_float_value,
-                    "step": 0.05,
-                    "display": "slider",
-                }),
-                # 腰间装饰
-                "waist_decoration": (buildOptionList(build_prompt_manager.waist_decoration_prompt.get_dataset()), {
-                    "default": EMPTY_OPTION,
-                }),
-                # 腰间装饰权重
-                "waist_decoration_weight": ("FLOAT", {
-                    "default": 1,
-                    "min": 0,
-                    "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -734,6 +748,111 @@ class PortraitFashionPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
+                # 头部装饰
+                "head_decoration": (buildOptionList(build_prompt_manager.head_decoration_prompt.get_dataset()), {
+                    "default": EMPTY_OPTION,
+                }),
+                # 头部装饰权重
+                "head_decoration_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
+                # 颈部装饰
+                "neck_decoration": (buildOptionList(build_prompt_manager.neck_decoration_prompt.get_dataset()), {
+                    "default": EMPTY_OPTION,
+                }),
+                # 颈部装饰权重
+                "neck_decoration_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
+                # 胸部装饰
+                "chest_decoration": (buildOptionList(build_prompt_manager.chest_decoration_prompt.get_dataset()), {
+                    "default": EMPTY_OPTION,
+                }),
+                # 胸部装饰权重
+                "chest_decoration_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
+                # 腰部装饰
+                "waist_decoration": (buildOptionList(build_prompt_manager.waist_decoration_prompt.get_dataset()), {
+                    "default": EMPTY_OPTION,
+                }),
+                # 腰部装饰权重
+                "waist_decoration_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
+                 # 手臂装饰
+                "arms_decoration": (buildOptionList(build_prompt_manager.arms_decoration_prompt.get_dataset()), {
+                    "default": EMPTY_OPTION,
+                }),
+                # 手臂装饰权重
+                "arms_decoration_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
+                # 手部装饰
+                "hands_decoration": (buildOptionList(build_prompt_manager.hands_decoration_prompt.get_dataset()), {
+                    "default": EMPTY_OPTION,
+                }),
+                # 手部装饰权重
+                "hands_decoration_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
+                # 腿部装饰
+                "legs_decoration": (buildOptionList(build_prompt_manager.legs_decoration_prompt.get_dataset()), {
+                    "default": EMPTY_OPTION,
+                }),
+                # 腿部装饰权重
+                "legs_decoration_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
+                # 脚部装饰
+                "feet_decoration": (buildOptionList(build_prompt_manager.feet_decoration_prompt.get_dataset()), {
+                    "default": EMPTY_OPTION,
+                }),
+                # 脚部装饰权重
+                "feet_decoration_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -781,12 +900,24 @@ class PortraitFashionPrompt:
         shoes_weight=0,
         hat=EMPTY_OPTION,
         hat_weight=0,
-        neck_decoration=EMPTY_OPTION,
-        neck_decoration_weight=0,
-        waist_decoration=EMPTY_OPTION,
-        waist_decoration_weight=0,
         gloves=EMPTY_OPTION,
         gloves_weight=0,
+        head_decoration=EMPTY_OPTION,
+        head_decoration_weight=0,
+        neck_decoration=EMPTY_OPTION,
+        neck_decoration_weight=0,
+        chest_decoration=EMPTY_OPTION,
+        chest_decoration_weight=0,
+        waist_decoration=EMPTY_OPTION,
+        waist_decoration_weight=0,
+        arms_decoration=EMPTY_OPTION,
+        arms_decoration_weight=0,
+        hands_decoration=EMPTY_OPTION,
+        hands_decoration_weight=0,
+        legs_decoration=EMPTY_OPTION,
+        legs_decoration_weight=0,
+        feet_decoration=EMPTY_OPTION,
+        feet_decoration_weight=0,
         seed=0,
         enable=True,
         preset_prompt="",
@@ -826,13 +957,25 @@ class PortraitFashionPrompt:
                 shoes_weight=shoes_weight,
                 hat=hat,
                 hat_weight=hat_weight,
-                neck_decoration=neck_decoration,
-                neck_decoration_weight=neck_decoration_weight,
-                waist_decoration=waist_decoration,
-                waist_decoration_weight=waist_decoration_weight,
                 gloves=gloves,
                 gloves_weight=gloves_weight,
-                seed=0
+                head_decoration=head_decoration,
+                head_decoration_weight=head_decoration_weight,
+                neck_decoration=neck_decoration,
+                neck_decoration_weight=neck_decoration_weight,
+                chest_decoration=chest_decoration,
+                chest_decoration_weight=chest_decoration_weight,
+                waist_decoration=waist_decoration,
+                waist_decoration_weight=waist_decoration_weight,
+                arms_decoration=arms_decoration,
+                arms_decoration_weight=arms_decoration_weight,
+                hands_decoration=hands_decoration,
+                hands_decoration_weight=hands_decoration_weight,
+                legs_decoration=legs_decoration,
+                legs_decoration_weight=legs_decoration_weight,
+                feet_decoration=feet_decoration,
+                feet_decoration_weight=feet_decoration_weight,
+                seed=seed
             )
 
             if fashion_prompt != "":
@@ -868,6 +1011,7 @@ class PortraitPosePrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -880,54 +1024,98 @@ class PortraitPosePrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
-                # 头部姿态
-                "head_pose": (buildOptionList(build_prompt_manager.head_pose_prompt.get_dataset()), {
+                # 头部动作
+                "head_action": (buildOptionList(build_prompt_manager.head_action_prompt.get_dataset()), {
                     "default": EMPTY_OPTION,
                 }),
-                # 头部姿态权重
-                "head_pose_weight": ("FLOAT", {
+                # 头部动作权重
+                "head_action_weight": ("FLOAT", {
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
-                # 胸部姿态
-                "chest_pose": (buildOptionList(build_prompt_manager.chest_pose_prompt.get_dataset()), {
+                # 胸部动作
+                "chest_action": (buildOptionList(build_prompt_manager.chest_action_prompt.get_dataset()), {
                     "default": EMPTY_OPTION,
                 }),
-                # 胸部姿态权重
-                "chest_pose_weight": ("FLOAT", {
+                # 胸部动作权重
+                "chest_action_weight": ("FLOAT", {
                     "default": 0,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
-                # 手部姿态
-                "hand_pose": (buildOptionList(build_prompt_manager.hand_pose_prompt.get_dataset()), {
+                # 腰部动作
+                "waist_action": (buildOptionList(build_prompt_manager.waist_action_prompt.get_dataset()), {
                     "default": EMPTY_OPTION,
                 }),
-                # 手部姿态权重
-                "hand_pose_weight": ("FLOAT", {
+                # 腰部动作权重
+                "waist_action_weight": ("FLOAT", {
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
-                # 腿部姿态
-                "leg_pose": (buildOptionList(build_prompt_manager.leg_pose_prompt.get_dataset()), {
+                # 手臂动作
+                "arms_action": (buildOptionList(build_prompt_manager.arms_action_prompt.get_dataset()), {
                     "default": EMPTY_OPTION,
                 }),
-                # 腿部姿态权重
-                "leg_pose_weight": ("FLOAT", {
+                # 手臂动作权重
+                "arms_action_weight": ("FLOAT", {
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
+                # 手部动作
+                "hands_action": (buildOptionList(build_prompt_manager.hands_action_prompt.get_dataset()), {
+                    "default": EMPTY_OPTION,
+                }),
+                # 手部动作权重
+                "hands_action_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
+                # 腿部动作
+                "legs_action": (buildOptionList(build_prompt_manager.legs_action_prompt.get_dataset()), {
+                    "default": EMPTY_OPTION,
+                }),
+                # 腿部动作权重
+                "legs_action_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
+                # 脚部动作
+                "feet_action": (buildOptionList(build_prompt_manager.feet_action_prompt.get_dataset()), {
+                    "default": EMPTY_OPTION,
+                }),
+                # 脚部动作权重
+                "feet_action_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -959,14 +1147,20 @@ class PortraitPosePrompt:
         pose_weight=1,
         action=EMPTY_OPTION,
         action_weight=0,
-        head_pose=EMPTY_OPTION,
-        head_pose_weight=0,
-        chest_pose=EMPTY_OPTION,
-        chest_pose_weight=0,
-        hand_pose=EMPTY_OPTION,
-        hand_pose_weight=0,
-        leg_pose=EMPTY_OPTION,
-        leg_pose_weight=0,
+        head_action=EMPTY_OPTION,
+        head_action_weight=0,
+        chest_action=EMPTY_OPTION,
+        chest_action_weight=0,
+        waist_action=EMPTY_OPTION,
+        waist_action_weight=0,
+        arms_action=EMPTY_OPTION,
+        arms_action_weight=0,
+        hands_action=EMPTY_OPTION,
+        hands_action_weight=0,
+        legs_action=EMPTY_OPTION,
+        legs_action_weight=0,
+        feet_action=EMPTY_OPTION,
+        feet_action_weight=0,
         seed=0,
         enable=True,
         preset_prompt="",
@@ -990,14 +1184,20 @@ class PortraitPosePrompt:
                 pose_weight=pose_weight,
                 action=action,
                 action_weight=action_weight,
-                head_pose=head_pose,
-                head_pose_weight=head_pose_weight,
-                chest_pose=chest_pose,
-                chest_pose_weight=chest_pose_weight,
-                hand_pose=hand_pose,
-                hand_pose_weight=hand_pose_weight,
-                leg_pose=leg_pose,
-                leg_pose_weight=leg_pose_weight,
+                head_action=head_action,
+                head_action_weight=head_action_weight,
+                chest_action=chest_action,
+                chest_action_weight=chest_action_weight,
+                waist_action=waist_action,
+                waist_action_weight=waist_action_weight,
+                arms_action=arms_action,
+                arms_action_weight=arms_action_weight,
+                hands_action=hands_action,
+                hands_action_weight=hands_action_weight,
+                legs_action=legs_action,
+                legs_action_weight=legs_action_weight,
+                feet_action=feet_action,
+                feet_action_weight=feet_action_weight,
                 seed=seed
             )
 
@@ -1034,6 +1234,7 @@ class PortraitCosmeticPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -1046,6 +1247,7 @@ class PortraitCosmeticPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -1054,6 +1256,7 @@ class PortraitCosmeticPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -1062,6 +1265,7 @@ class PortraitCosmeticPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -1070,6 +1274,7 @@ class PortraitCosmeticPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -1078,6 +1283,7 @@ class PortraitCosmeticPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -1086,6 +1292,7 @@ class PortraitCosmeticPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),
@@ -1094,6 +1301,7 @@ class PortraitCosmeticPrompt:
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
+                    "round": 0.01,
                     "step": 0.05,
                     "display": "slider",
                 }),

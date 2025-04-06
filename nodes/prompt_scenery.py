@@ -5,11 +5,11 @@ from ..modules.config import config
 
 
 styles = [
-    "none", "all"
+    EMPTY_OPTION, RANDOM_OPTION
 ]
 
 artists = [
-    "none", "all", "popular", "greg mode", "3D", "abstract", "angular",
+    EMPTY_OPTION, RANDOM_OPTION, "popular", "greg mode", "3D", "abstract", "angular",
     "anime", "architecture", "art nouveau", "art deco", "baroque", "bauhaus", "cartoon",
     "character", "children's illustration", "cityscape", "cinema", "clean", "cloudscape",
     "collage", "colorful", "comics", "cubism", "dark", "detailed", "digital", "expressionism",
@@ -79,18 +79,13 @@ class SceneryPrompt:
         if input_prompt != "":
             prompt_words.append(input_prompt)
 
-        if preset_prefix != "":
-            prompt_words.append(preset_prefix)
-
+        scenery_prompt = preset_prefix + scenery_prompt + preset_suffix
         if scenery_prompt != "":
             prompt_words.append(scenery_prompt)
 
-        if preset_suffix != "":
-            prompt_words.append(preset_suffix)
-
+        output_prompt = ""
         if len(prompt_words) > 0:
             output_prompt = ", ".join(prompt_words)
-            return (output_prompt, )
-        else:
-            return ("", )
+ 
+        return (output_prompt, )
 

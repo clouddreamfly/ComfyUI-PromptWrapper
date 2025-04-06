@@ -1,5 +1,5 @@
 import os
-from .dataset import Dataset
+from .dataset import Dataset, JsonlDataset, JsonDataset
 from .config import config
 
 
@@ -48,13 +48,27 @@ def buildClassifyPrompt(text):
     return text.replace(" ", "_") + "_prompt"
 
 
+# 构建数据
+def buildJsonDatas(text):
+    return text.replace(" ", "_") + "_datas"
+
+
+# 构建提示词
+def buildJsonPrompt(text):
+    return text.replace(" ", "_") + "_prompt"
+
 
 # 构建提示词
 class BuildPrompt:
 
     def __init__(self, path):
     
-        self._dataset = Dataset(path)
+        ext = os.path.splitext(path)[1]
+        if ext.lower() == ".json":
+            self._dataset = JsonDataset(path)
+        else:
+            self._dataset = JsonlDataset(path)
+        
         
     def get_dataset(self):
 
@@ -81,7 +95,12 @@ class BuildPrompt:
 
     def get_prompt(self, key):
 
-        return self._dataset[key] if key in self._dataset else ""
+        prompt = ""
+        datas = getattr(self._dataset, key, None)
+        if datas is not None:
+            prompt = datas["text"] if "text" in datas else ""
+
+        return prompt
 
 
     def generate_prompt(self, seed, styles="", artists=""):
@@ -132,6 +151,14 @@ class BuildPromptManager:
             data_path = os.path.join(path, language, file_name)
             build_prompts[classify_prompt] = BuildPrompt(data_path)
 
+        for data_name in config.json_datas:
+
+            json_datas = buildJsonDatas(data_name)
+            json_prompt = buildJsonPrompt(data_name)
+            file_name = f"{json_datas}.json"
+            data_path = os.path.join(path, language, file_name)
+            build_prompts[json_prompt] = BuildPrompt(data_path)
+
         return build_prompts
 
 
@@ -165,6 +192,7 @@ class BuildPromptManager:
         eyebrows_style=EMPTY_OPTION,
         eyebrows_color=EMPTY_OPTION,
         eyelashs_style=EMPTY_OPTION,
+        eyelashs_color=EMPTY_OPTION,
         nose_shape=EMPTY_OPTION,
         hair_style=EMPTY_OPTION,
         hair_color=EMPTY_OPTION,
@@ -213,7 +241,7 @@ class BuildPromptManager:
             gender = ""
 
         if androgynous_weight > 0:
-            androgynous = self.androgynous_prompt.choice_prompt(seed)
+            androgynous = self.portrait_prompt.get_prompt("androgynous")
             androgynous = buildPromptWeight(androgynous, androgynous_weight)
         else:
             androgynous = ""
@@ -249,25 +277,25 @@ class BuildPromptManager:
             face_shape = ""
 
         if pretty_face_weight > 0:
-            pretty_face = self.pretty_face_prompt.choice_prompt(seed)
+            pretty_face = self.portrait_prompt.get_prompt("pretty_face")
             pretty_face = buildPromptWeight(pretty_face, pretty_face_weight)
         else:
             pretty_face = ""
 
         if ordinary_face_weight > 0:
-            ordinary_face = self.ordinary_face_prompt.choice_prompt(seed)
+            ordinary_face = self.portrait_prompt.get_prompt("ordinary_face")
             ordinary_face = buildPromptWeight(ordinary_face, ordinary_face_weight)
         else:
             ordinary_face = ''
         
         if ugly_face_weight > 0:
-            ugly_face = self.ugly_face_prompt.choice_prompt(seed)
+            ugly_face = self.portrait_prompt.get_prompt("ugly_face")
             ugly_face = buildPromptWeight(ugly_face, ugly_face_weight)
         else:
             ugly_face = ""
 
         if facial_asymmetry_weight > 0:
-            facial_asymmetry = self.facial_asymmetry_prompt.choice_prompt(seed)
+            facial_asymmetry = self.portrait_prompt.get_prompt("facial_asymmetry")
             facial_asymmetry = buildPromptWeight(facial_asymmetry, facial_asymmetry_weight)
         else:
             facial_asymmetry = ""
@@ -323,6 +351,14 @@ class BuildPromptManager:
         else:
             eyelashs_style = ""
 
+        if eyelashs_color == RANDOM_OPTION:
+            eyelashs_color = self.eyelashs_color_prompt.choice_prompt(seed)
+            eyelashs_color = buildPromptWeight(eyelashs_color, 1.05)
+        elif eyelashs_color != EMPTY_OPTION:
+            eyelashs_color = buildPromptWeight(eyelashs_color, 1.05)
+        else:
+            eyelashs_color = ""
+
         if nose_shape == RANDOM_OPTION:
             nose_shape = self.nose_shape_prompt.choice_prompt(seed)
             nose_shape = buildPromptWeight(nose_shape, 1.05)
@@ -356,7 +392,7 @@ class BuildPromptManager:
             hair_length = ""
 
         if disheveled_weight > 0:
-            disheveled = self.disheveled_prompt.choice_prompt(seed)
+            disheveled = self.portrait_prompt.get_prompt("disheveled")
             disheveled = buildPromptWeight(disheveled, disheveled_weight)
         else:
             disheveled = ""
@@ -413,7 +449,7 @@ class BuildPromptManager:
             lens_angle,
             nationality, gender, androgynous, age, body_type,
             face_shape, pretty_face, ordinary_face, ugly_face, facial_asymmetry, facial_expression,
-            eyes_shape, eyes_color, eyebrows_style, eyebrows_color, eyelashs_style,
+            eyes_shape, eyes_color, eyebrows_style, eyebrows_color, eyelashs_style, eyelashs_color,
             nose_shape,
             hair_style, hair_color, hair_length, disheveled,
             mouth_shape,
@@ -461,56 +497,56 @@ class BuildPromptManager:
         if skin_weight > 0:
             if skin == RANDOM_OPTION:
                 prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), skin_weight))
-            elif skin == EMPTY_OPTION:
+            elif skin != EMPTY_OPTION:
                 prompt_words.append(buildPromptWeight(skin, skin_weight))
 
         if skin_details_weight > 0:
-            prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), skin_details_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("skin_details"), skin_details_weight))
 
         if skin_pores_weight > 0:
-            prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), skin_pores_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("skin_pores"), skin_pores_weight))
 
         if skin_imperfections_weight > 0:
-            prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), skin_imperfections_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("skin_imperfections"), skin_imperfections_weight))
 
         if skin_acne_weight > 0:
-            prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), skin_acne_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("skin_acne"), skin_acne_weight))
 
         if tanned_skin_weight > 0:
-            prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), tanned_skin_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("tanned_skin"), tanned_skin_weight))
 
         if bare_face_weight > 0:
-            prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), bare_face_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("bare_face"), bare_face_weight))
 
         if moist_face_weight > 0:
-            prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), moist_face_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("moist_face"), moist_face_weight))
 
         if dried_face_weight > 0:
-            prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), dried_face_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("dried_face"), dried_face_weight))
 
         if dimples_weight > 0:
-            prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), dimples_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("dimples"), dimples_weight))
 
         if wrinkles_weight > 0:
-            prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), wrinkles_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("wrinkles"), wrinkles_weight))
 
         if freckles_weight > 0:
-            prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), freckles_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("freckles"), freckles_weight))
 
         if moles_weight > 0:
-            prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), moles_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("moles"), moles_weight))
 
         if eyes_details_weight > 0:
-            prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), eyes_details_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("eyes_details"), eyes_details_weight))
 
-        if circular_pupil_weight > 0:
-            prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), circular_pupil_weight))
+        if circular_pupils_weight > 0:
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("circular_pupil"), circular_pupils_weight))
 
         if iris_details_weight > 0:
-            prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), iris_details_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("iris_details"), iris_details_weight))
 
         if circular_iris_weight > 0:
-            prompt_words.append(buildPromptWeight(self.skin_prompt.choice_prompt(seed), circular_iris_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("circular_iris"), circular_iris_weight))
 
 
         output_prompt = ""
@@ -524,10 +560,12 @@ class BuildPromptManager:
     def generate_portrait_fashion_prompt(self,
         clothes=EMPTY_OPTION,
         clothes_weight=1,
+        clothes_color=EMPTY_OPTION,
+        clothes_color_weight=0,
         up_clothes=EMPTY_OPTION,
         up_clothes_weight=0,
-        down_chothes=EMPTY_OPTION,
-        down_chothes_weight=0,
+        down_clothes=EMPTY_OPTION,
+        down_clothes_weight=0,
         trousers=EMPTY_OPTION,
         trousers_weight=0,
         underwear=EMPTY_OPTION,
@@ -557,17 +595,23 @@ class BuildPromptManager:
             elif clothes != EMPTY_OPTION:
                 prompt_words.append(buildPromptWeight(clothes, clothes_weight))
 
+        if clothes_color_weight > 0:
+            if clothes_color == RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.clothes_color_prompt.choice_prompt(seed), clothes_color_weight))
+            elif clothes_color != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(clothes_color, clothes_color_weight))
+
         if up_clothes_weight > 0:
             if up_clothes == RANDOM_OPTION:
                 prompt_words.append(buildPromptWeight(self.up_clothes_prompt.choice_prompt(seed), up_clothes_weight))
             elif up_clothes != EMPTY_OPTION:
                 prompt_words.append(buildPromptWeight(up_clothes, up_clothes_weight))
 
-        if down_chothes_weight > 0:
-            if down_chothes == RANDOM_OPTION:
-                prompt_words.append(buildPromptWeight(self.down_chothes_prompt.choice_prompt(seed), down_chothes_weight))
-            elif down_chothes != EMPTY_OPTION:
-                prompt_words.append(buildPromptWeight(down_chothes, down_chothes_weight))
+        if down_clothes_weight > 0:
+            if down_clothes== RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.down_clothes_prompt.choice_prompt(seed), down_clothes_weight))
+            elif down_clothes != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(down_clothes, down_clothes_weight))
 
         if trousers_weight > 0:
             if trousers == RANDOM_OPTION:
@@ -724,22 +768,22 @@ class BuildPromptManager:
                 prompt_words.append(buildPromptWeight(makeup_color, makeup_color_weight))
 
         if eyeshadow_weight > 0:
-            prompt_words.append(buildPromptWeight("eyeshadow make-up", eyeshadow_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("eyeshadow_make_up"), eyeshadow_weight))
 
         if eyeliner_weight > 0:
-            prompt_words.append(buildPromptWeight("eyeliner make-up", eyeliner_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("eyeliner_make_up"), eyeliner_weight))
 
         if mascara_weight > 0:
-            prompt_words.append(buildPromptWeight("mascara make-up", mascara_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("mascara_make_up"), mascara_weight))
 
         if blush_weight > 0:
-            prompt_words.append(buildPromptWeight("blush make-up", blush_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("blush_make_up"), blush_weight))
 
         if lipstick_weight > 0:
-            prompt_words.append(buildPromptWeight("lipstick make-up", lipstick_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("lipstick_make_up"), lipstick_weight))
 
         if lip_gloss_weight > 0:
-            prompt_words.append(buildPromptWeight("lip gloss make-up", lip_gloss_weight))
+            prompt_words.append(buildPromptWeight(self.portrait_prompt.get_prompt("lip_gloss_make_up"), lip_gloss_weight))
 
         output_prompt = ""
         if len(prompt_words) > 0:

@@ -45,9 +45,6 @@ class GeneratePrompt:
 
         if ainput_prompt != "":
             prompt_words.append(ainput_prompt)
-    
-        if preset_prefix != "":
-            prompt_words.append(preset_prefix)
 
         if classify != EMPTY_OPTION:
             # 获取Script的目录路径
@@ -61,16 +58,15 @@ class GeneratePrompt:
             build = BuildPrompt(data_file)
             prompt = build.generate_prompt(seed)
 
+            prompt = preset_prefix + prompt + preset_suffix
             if prompt != "":
                 prompt_words.append(prompt)
 
-        if preset_suffix != "":
-            prompt_words.append(preset_suffix)
-
+        output_prompt = ""
         if len(prompt_words) > 0:
             output_prompt = ", ".join(prompt_words)
-            return (output_prompt, )
-        else:
-            return ("", )
+            
+        return (output_prompt, )
+
         
 

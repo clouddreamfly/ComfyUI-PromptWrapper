@@ -148,6 +148,10 @@ class PortraitPrompt:
                 "eyelashs_style": (buildOptionList(build_prompt_manager.eyelashs_style_prompt.get_dataset()), {
                     "default": DEFAULT_OPTION,
                 }),
+                # 睫毛颜色
+                "eyelashs_color": (buildOptionList(build_prompt_manager.eyelashs_color_prompt.get_dataset()), {
+                    "default": DEFAULT_OPTION,
+                }),
                 # 鼻子形状
                 "nose_shape": (buildOptionList(build_prompt_manager.nose_shape_prompt.get_dataset()), {
                     "default": DEFAULT_OPTION,
@@ -241,6 +245,7 @@ class PortraitPrompt:
             eyebrows_style=EMPTY_OPTION,
             eyebrows_color=EMPTY_OPTION,
             eyelashs_style=EMPTY_OPTION,
+            eyelashs_color=EMPTY_OPTION,
             nose_shape=EMPTY_OPTION,
             hair_style=EMPTY_OPTION,
             hair_color=EMPTY_OPTION,
@@ -294,6 +299,7 @@ class PortraitPrompt:
                 eyebrows_style=eyebrows_style,
                 eyebrows_color=eyebrows_color,
                 eyelashs_style=eyelashs_style,
+                eyelashs_color=eyelashs_color,
                 nose_shape=nose_shape,
                 hair_style=hair_style,
                 hair_color=hair_color,
@@ -311,11 +317,11 @@ class PortraitPrompt:
             if portrait_prompt != "":
                 prompt_words.append(portrait_prompt)
 
+        output_prompt = ""
         if len(prompt_words) > 0:
             output_prompt = ", ".join(prompt_words)
-            return (output_prompt, )
-        else:
-            return ("", )
+            
+        return (output_prompt, )
 
 
 
@@ -545,7 +551,7 @@ class PortraitSkinPrompt:
                 freckles_weight=freckles_weight,
                 moles_weight=moles_weight,
                 eyes_details_weight=eyes_details_weight,
-                circular_pupil_weight=circular_pupil_weight,
+                circular_pupils_weight=circular_pupils_weight,
                 iris_details_weight=iris_details_weight,
                 circular_iris_weight=circular_iris_weight,
                 seed=seed
@@ -554,11 +560,11 @@ class PortraitSkinPrompt:
             if skin_prompt != "":
                 prompt_words.append(skin_prompt)
 
+        output_prompt = ""
         if len(prompt_words) > 0:
             output_prompt = ", ".join(prompt_words)
-            return (output_prompt, )
-        else:
-            return ("", )
+            
+        return (output_prompt, )
 
 
 
@@ -587,6 +593,18 @@ class PortraitFashionPrompt:
                     "step": 0.05,
                     "display": "slider",
                 }),
+                # 衣服颜色
+                "clothes_color": (buildOptionList(build_prompt_manager.clothes_color_prompt.get_dataset()), {
+                    "default": EMPTY_OPTION,
+                }),
+                # 衣服颜色权重
+                "clothes_color_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
                 # 上衣
                 "up_clothes": (buildOptionList(build_prompt_manager.up_clothes_prompt.get_dataset()), {
                     "default": EMPTY_OPTION,
@@ -600,11 +618,11 @@ class PortraitFashionPrompt:
                     "display": "slider",
                 }),
                 # 下衣
-                "down_chothes": (buildOptionList(build_prompt_manager.down_chothes_prompt.get_dataset()), {
+                "down_clothes": (buildOptionList(build_prompt_manager.down_clothes_prompt.get_dataset()), {
                     "default": EMPTY_OPTION,
                 }),
                 # 下衣权重
-                "down_chothes_weight": ("FLOAT", {
+                "down_clothes_weight": ("FLOAT", {
                     "default": 1,
                     "min": 0,
                     "max": max_float_value,
@@ -745,10 +763,12 @@ class PortraitFashionPrompt:
         language="",
         clothes=EMPTY_OPTION,
         clothes_weight=1,
+        clothes_color=EMPTY_OPTION,
+        clothes_color_weight=0,
         up_clothes=EMPTY_OPTION,
         up_clothes_weight=0,
-        down_chothes=EMPTY_OPTION,
-        down_chothes_weight=0,
+        down_clothes=EMPTY_OPTION,
+        down_clothes_weight=0,
         trousers=EMPTY_OPTION,
         trousers_weight=0,
         underwear=EMPTY_OPTION,
@@ -788,10 +808,12 @@ class PortraitFashionPrompt:
             fashion_prompt = build_prompt_manager.generate_portrait_fashion_prompt(
                 clothes=clothes,
                 clothes_weight=clothes_weight,
+                clothes_color=clothes_color,
+                clothes_color_weight=clothes_color_weight,
                 up_clothes=up_clothes,
                 up_clothes_weight=up_clothes_weight,
-                down_chothes=down_chothes,
-                down_chothes_weight=down_chothes_weight,
+                down_clothes=down_clothes,
+                down_clothes_weight=down_clothes_weight,
                 trousers=trousers,
                 trousers_weight=trousers_weight,
                 underwear=underwear,
@@ -816,11 +838,12 @@ class PortraitFashionPrompt:
             if fashion_prompt != "":
                 prompt_words.append(fashion_prompt)
 
+        output_prompt = ""
         if len(prompt_words) > 0:
             output_prompt = ", ".join(prompt_words)
-            return (output_prompt, )
-        else:
-            return ("", )
+            
+        return (output_prompt, )
+
 
 
 
@@ -981,11 +1004,13 @@ class PortraitPosePrompt:
             if pose_prompt != "":
                 prompt_words.append(pose_prompt)
 
+        output_prompt = ""
         if len(prompt_words) > 0:
             output_prompt = ", ".join(prompt_words)
-            return (output_prompt, )
-        else:
-            return ("", )
+        
+        return (output_prompt, )
+
+
 
 
 # Portrait Cosmetics Prompt 人像化妆提示词
@@ -1122,7 +1147,7 @@ class PortraitCosmeticPrompt:
             prompt_words.append(preset_prompt)
 
         if enable == True:
-            cosmetic_prompt = generate_portrait_cosmetic_prompt(
+            cosmetic_prompt = build_prompt_manager.generate_portrait_cosmetic_prompt(
                 makeup_style=makeup_style,
                 makeup_style_weight=makeup_style_weight,
                 makeup_color=makeup_color,
@@ -1139,8 +1164,9 @@ class PortraitCosmeticPrompt:
             if cosmetic_prompt != "":
                 prompt_words.append(cosmetic_prompt)
 
+        output_prompt = ""
         if len(prompt_words) > 0:
             output_prompt = ", ".join(prompt_words)
-            return (output_prompt, )
-        else:
-            return ("", )
+            
+        return (output_prompt, )
+

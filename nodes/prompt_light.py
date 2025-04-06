@@ -113,8 +113,8 @@ class LightPrompt:
             if light_prompt != "":
                 prompt_words.append(light_prompt)
 
+        output_prompt = ""
         if len(prompt_words) > 0:
             output_prompt = ", ".join(prompt_words)
-            return (output_prompt, )
-        else:
-            return ("", )
+        
+        return (output_prompt, )

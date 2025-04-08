@@ -9,6 +9,9 @@ from .nodes.prompt_portrait import PortraitSkinPrompt
 from .nodes.prompt_portrait import PortraitFashionPrompt
 from .nodes.prompt_portrait import PortraitPosePrompt
 from .nodes.prompt_portrait import PortraitCosmeticPrompt
+from .nodes.prompt_combine import CombinePrompt, MultiCombinePrompt
+from .nodes.prompt_custom import CustomPrompt
+from .nodes.prompt_save import SavePrompt
 
 
 
@@ -24,6 +27,10 @@ NODE_CLASS_MAPPINGS = {
     "PortraitFashionPrompt": PortraitFashionPrompt,
     "PortraitPosePrompt": PortraitPosePrompt,
     "PortraitCosmeticPrompt": PortraitCosmeticPrompt,
+    "CombinePrompt": CombinePrompt,
+    "MultiCombinePrompt": MultiCombinePrompt,
+    "CustomPrompt": CustomPrompt,
+    "SavePrompt": SavePrompt,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -38,6 +45,10 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "PortraitFashionPrompt": "Portrait Fashion Prompt",
     "PortraitPosePrompt": "Portrait Pose Prompt",
     "PortraitCosmeticPrompt": "Portrait Cosmetic Prompt",
+    "CombinePrompt": "Combine Prompt",
+    "MultiCombinePrompt": "Multi Combine Prompt",
+    "CustomPrompt": "Custom Prompt",
+    "SavePrompt": "Save Prompt",
 }
 
 __all__ = ['NODE_CLASS_MAPPINGS', 'NODE_DISPLAY_NAME_MAPPINGS'] 

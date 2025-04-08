@@ -1047,7 +1047,7 @@ class PortraitPosePrompt:
                 }),
                 # 胸部动作权重
                 "chest_action_weight": ("FLOAT", {
-                    "default": 0,
+                    "default": 1,
                     "min": 0,
                     "max": max_float_value,
                     "round": 0.01,

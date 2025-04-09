@@ -39,12 +39,12 @@ class GeneratePrompt:
     FUNCTION = "prompt_generate"
     CATEGORY = "PromptWrapper"
 
-    def prompt_generate(self, language, classify, seed, preset_prefix="", preset_suffix="", ainput_prompt=""):
+    def prompt_generate(self, language, classify, seed, preset_prefix="", preset_suffix="", input_prompt=""):
  
         prompt_words = []
 
-        if ainput_prompt != "":
-            prompt_words.append(ainput_prompt)
+        if input_prompt != "":
+            prompt_words.append(input_prompt)
 
         if classify != EMPTY_OPTION:
             # 获取Script的目录路径

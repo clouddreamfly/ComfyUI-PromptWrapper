@@ -9,9 +9,7 @@ class SavePrompt:
     def INPUT_TYPES(s):
         return {
             "required": {
-                "text": ("STRING", {
-                    "forceInput": True
-                }),
+                "prompt": ("STRING", {"forceInput": True}),
                 "filename": ("STRING", {
                     "default": "custom"
                 })
@@ -25,9 +23,10 @@ class SavePrompt:
     CATEGORY = "PromptWrapper"
 
 
-    def save(self, text="", filename=""):
+    def save(self, prompt="", filename=""):
  
-        text = text.strip()
+        text = prompt.strip()
+
         if text != "" and text != "\n" and text != "\r\n":
             # 获取Script的目录路径
             script_dir = os.path.dirname(os.path.abspath(__file__)) 
@@ -47,6 +46,5 @@ class SavePrompt:
                     fp.write(f"\n{text_data}")
 
         
-        return {"ui": {"text": text}}
-
+        return {"ui": {"text": text}, "result": ()}
 

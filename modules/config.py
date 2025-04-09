@@ -26,7 +26,7 @@ class Config:
 def _load_config():
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    config_file = os.path.join(script_dir, "../assets", "config.json")
+    config_file = os.path.join(script_dir, "..", "assets", "config.json")
     return Config(config_file)
 
 

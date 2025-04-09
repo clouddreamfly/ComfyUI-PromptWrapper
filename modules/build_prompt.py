@@ -971,7 +971,7 @@ class BuildPromptManager:
 def _init_build_prompt_manager():
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    config_dir = os.path.join(script_dir, "../assets")
+    config_dir = os.path.join(script_dir, "..", "assets")
     return BuildPromptManager(config_dir, config)
 
 # 初始化

@@ -69,7 +69,7 @@ class SceneryPrompt:
         # 获取Script的目录路径
         script_dir = os.path.dirname(os.path.abspath(__file__))  # Script directory
         language_dir = "zh" if language == "Chinese" else "en"
-        data_file = os.path.join(script_dir, "../assets", language_dir, "scenery_datas.jsonl")
+        data_file = os.path.join(script_dir, "..", "assets", language_dir, "scenery_datas.jsonl")
 
         build = BuildPrompt(data_file)
         scenery_prompt = build.generate_prompt(seed, styles, artists)

@@ -29,7 +29,7 @@ class NegativePrompt:
         # 获取Script的目录路径
         script_dir = os.path.dirname(os.path.abspath(__file__))  # Script directory
         language_dir = "zh" if language == "Chinese" else "en"
-        data_file = os.path.join(script_dir, "../assets", language_dir, "negative_datas.jsonl")
+        data_file = os.path.join(script_dir, "..", "assets", language_dir, "negative_datas.jsonl")
 
         build = BuildPrompt(data_file)
         negative_prompt = build.generate_prompt(seed)

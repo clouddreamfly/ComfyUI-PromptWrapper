@@ -53,7 +53,7 @@ class GeneratePrompt:
         
             classify_datas = buildClassifyDatas(classify)
             file_name = f"{classify_datas}.jsonl"
-            data_file = os.path.join(script_dir, "../assets", language_dir, file_name)
+            data_file = os.path.join(script_dir, "..", "assets", language_dir, file_name)
 
             build = BuildPrompt(data_file)
             prompt = build.generate_prompt(seed)

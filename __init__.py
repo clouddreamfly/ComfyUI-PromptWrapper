@@ -13,6 +13,7 @@ from .nodes.prompt_combine import CombinePrompt, MultiCombinePrompt
 from .nodes.prompt_replace import ReplacePrompt, MultiReplacePrompt
 from .nodes.prompt_custom import CustomPrompt
 from .nodes.prompt_save import SavePrompt
+from .nodes.prompt_preview import PreviewPrompt
 
 
 
@@ -34,6 +35,7 @@ NODE_CLASS_MAPPINGS = {
     "MultiReplacePrompt": MultiReplacePrompt,
     "CustomPrompt": CustomPrompt,
     "SavePrompt": SavePrompt,
+    "PreviewPrompt": PreviewPrompt,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -54,6 +56,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "MultiReplacePrompt": "Multi Replace Prompt",
     "CustomPrompt": "Custom Prompt",
     "SavePrompt": "Save Prompt",
+    "PreviewPrompt", "Preview Prompt",
 }
 
 __all__ = ['NODE_CLASS_MAPPINGS', 'NODE_DISPLAY_NAME_MAPPINGS'] 

@@ -61,7 +61,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SavePrompt": "Save Prompt",
     "InputPrompt": "Input Prompt",
     "RandomLinePrompt": "Random Line Prompt",
-    "PreviewPrompt", "Preview Prompt",
+    "PreviewPrompt": "Preview Prompt",
 }
 
 __all__ = ['NODE_CLASS_MAPPINGS', 'NODE_DISPLAY_NAME_MAPPINGS'] 

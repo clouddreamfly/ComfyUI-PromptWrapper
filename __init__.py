@@ -13,6 +13,7 @@ from .nodes.prompt_combine import CombinePrompt, MultiCombinePrompt
 from .nodes.prompt_replace import ReplacePrompt, MultiReplacePrompt
 from .nodes.prompt_custom import CustomPrompt
 from .nodes.prompt_save import SavePrompt
+from .nodes.prompt_text import InputPrompt, RandomLinePrompt
 from .nodes.prompt_preview import PreviewPrompt
 
 
@@ -35,6 +36,8 @@ NODE_CLASS_MAPPINGS = {
     "MultiReplacePrompt": MultiReplacePrompt,
     "CustomPrompt": CustomPrompt,
     "SavePrompt": SavePrompt,
+    "InputPrompt": InputPrompt,
+    "RandomLinePrompt": RandomLinePrompt,
     "PreviewPrompt": PreviewPrompt,
 }
 
@@ -56,6 +59,8 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "MultiReplacePrompt": "Multi Replace Prompt",
     "CustomPrompt": "Custom Prompt",
     "SavePrompt": "Save Prompt",
+    "InputPrompt": "Input Prompt",
+    "RandomLinePrompt": "Random Line Prompt",
     "PreviewPrompt", "Preview Prompt",
 }
 

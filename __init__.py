@@ -10,6 +10,7 @@ from .nodes.prompt_portrait import PortraitFashionPrompt
 from .nodes.prompt_portrait import PortraitPosePrompt
 from .nodes.prompt_portrait import PortraitCosmeticPrompt
 from .nodes.prompt_combine import CombinePrompt, MultiCombinePrompt
+from .nodes.prompt_replace import ReplacePrompt, MultiReplacePrompt
 from .nodes.prompt_custom import CustomPrompt
 from .nodes.prompt_save import SavePrompt
 
@@ -29,6 +30,8 @@ NODE_CLASS_MAPPINGS = {
     "PortraitCosmeticPrompt": PortraitCosmeticPrompt,
     "CombinePrompt": CombinePrompt,
     "MultiCombinePrompt": MultiCombinePrompt,
+    "ReplacePrompt": ReplacePrompt,
+    "MultiReplacePrompt": MultiReplacePrompt,
     "CustomPrompt": CustomPrompt,
     "SavePrompt": SavePrompt,
 }
@@ -47,6 +50,8 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "PortraitCosmeticPrompt": "Portrait Cosmetic Prompt",
     "CombinePrompt": "Combine Prompt",
     "MultiCombinePrompt": "Multi Combine Prompt",
+    "ReplacePrompt": "Replace Prompt",
+    "MultiReplacePrompt": "Multi Replace Prompt",
     "CustomPrompt": "Custom Prompt",
     "SavePrompt": "Save Prompt",
 }

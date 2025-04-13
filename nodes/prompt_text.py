@@ -80,3 +80,4 @@ class RandomLinePrompt:
             output_prompt = ", ".join(output_words)
 
         return (output_prompt, )
+    

@@ -61,20 +61,22 @@ class RandomLinePrompt:
     def random_text(self, text="", seed=0, input_prompt=""):
 
         output_texts = []
-        if input_prompt != "":
-            lines = input_prompt.split("\n")
-            for line in lines:
-                output_texts.append(line)
-
         if text != "":
             lines = text.split("\n")
             for line in lines:
                 output_texts.append(line)
 
-        output_prompt = ""
+        output_words = []
+        if input_prompt != "":
+            output_words.append(input_prompt)
+
         line_count = len(output_texts)
         if line_count > 0:
             line_index = seed % line_count
-            output_prompt = output_texts[line_index]
+            output_words.append(output_texts[line_index])
+
+        output_prompt = ""
+        if len(output_words) > 0:
+            output_prompt = ", ".join(output_words)
 
         return (output_prompt, )

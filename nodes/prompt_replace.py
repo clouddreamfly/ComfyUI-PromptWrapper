@@ -33,7 +33,9 @@ class ReplacePrompt:
     def INPUT_TYPES(s):
         return {
             "required": {
-                "prompt": ("STRING",),
+                "prompt": ("STRING", {
+                    "forceInput": True
+                }),
                 "pattern_A": ("STRING", {
                     "default": ""
                 }),
@@ -95,7 +97,9 @@ class MultiReplacePrompt:
     def INPUT_TYPES(s):
         return {
             "required": {
-                "prompt": ("STRING",),
+                "prompt": ("STRING",{
+                    "forceInput": True
+                }),
                 "pattern_A": ("STRING", {
                     "default": ""
                 }),

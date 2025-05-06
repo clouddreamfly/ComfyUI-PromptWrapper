@@ -2,7 +2,7 @@
 
 ComfyUI 提示翻译，支持本地部署，中文翻译英文，英文翻译中文
 
-# Translation model installation
+# 翻译模型安装说明
 
 首先要在ComfyUI的模型目录中创建目录  
 中文翻译英文：models/nlp/Helsinki-NLP/opus-mt-zh-en  

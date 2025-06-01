@@ -11,7 +11,7 @@ class PromptTranslation:
     def INPUT_TYPES(s):
         return {
             "required": {
-                "model_name": (["Helsinki-NLP/opus-mt-zh-en", "Helsinki-NLP/opus-mt-en-zh"],),
+                "model_name": (["Helsinki-NLP/opus-mt-zh-en", "Helsinki-NLP/opus-mt-en-zh", "Helsinki-NLP/opus-mt-tc-bible-big-zhx-en"],),
                 "prompt": ("STRING", {
                     "multiline": True,
                     "default": "A beautiful photo of"

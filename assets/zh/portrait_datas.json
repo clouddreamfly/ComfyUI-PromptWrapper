@@ -1,0 +1,86 @@
+{
+    "androgynous": {
+        "text":"双性人性"
+    },
+    "pretty_face": {
+        "text":"漂亮的脸"
+    },
+    "ordinary_face": {
+        "text":"平凡的脸"
+    },
+    "ugly_face": {
+        "text":"丑陋的脸"
+    },
+    "facial_asymmetry": {
+        "text":"脸部不对称"
+    },
+    "disheveled": {
+        "text":"头发的蓬松度"
+    },
+    "skin_details": {
+        "text":"皮肤细节"
+    },
+    "skin_pores": {
+        "text":"皮肤毛孔"
+    },
+    "skin_imperfections": {
+        "text":"皮肤瑕疵"
+    },
+    "skin_acne": {
+        "text":"皮肤粉刺"
+    },
+    "tanned_skin": {
+        "text":"晒黑的皮肤"
+    },
+    "bare_face": {
+        "text":"素颜"
+    },
+    "moist_face": {
+        "text":"湿润的脸"
+    },
+    "dried_face": {
+        "text":"干燥的脸"
+    },
+    "dimples": {
+        "text":"酒窝"
+    },
+    "wrinkles": {
+        "text":"皱纹"
+    },
+    "freckles": {
+        "text":"雀斑"
+    },
+    "moles": {
+        "text":"痣"
+    },
+    "eyes_details": {
+        "text":"眼部细节"
+    },
+    "circular_pupil": {
+        "text":"圆形的瞳孔"
+    },
+    "iris_details": {
+        "text":"虹膜的细节"
+    },
+    "circular_iris": {
+        "text":"圆形的虹膜"
+    },
+    "eyeshadow_make_up": {
+        "text":"眼影"
+    },
+    "eyeliner_make_up": {
+        "text":"眼线"
+    },
+    "mascara_make_up": {
+        "text":"烟熏妆"
+    },
+    "blush_make_up": {
+        "text":"腮红"
+    },
+    "lipstick_make_up": {
+        "text":"口红"
+    },
+    "lip_gloss_make_up": {
+        "text":"唇彩"
+    }
+}

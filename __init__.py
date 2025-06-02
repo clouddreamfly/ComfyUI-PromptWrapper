@@ -15,6 +15,7 @@ from .nodes.prompt_custom import CustomPrompt
 from .nodes.prompt_save import SavePrompt
 from .nodes.prompt_text import InputPrompt, RandomLinePrompt
 from .nodes.prompt_preview import PreviewPrompt
+from .nodes.prompt_randoms import RandomsPrompt, RandomsWeightPrompt
 
 
 
@@ -38,6 +39,8 @@ NODE_CLASS_MAPPINGS = {
     "SavePrompt": SavePrompt,
     "InputPrompt": InputPrompt,
     "RandomLinePrompt": RandomLinePrompt,
+    "RandomsPrompt": RandomsPrompt,
+    "RandomsWeightPrompt": RandomsWeightPrompt,
     "PreviewPrompt": PreviewPrompt,
 }
 
@@ -61,6 +64,8 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SavePrompt": "Save Prompt",
     "InputPrompt": "Input Prompt",
     "RandomLinePrompt": "Random Line Prompt",
+    "RandomsPrompt": "Randoms Prompt",
+    "RandomsWeightPrompt": "Randoms Weight Prompt",
     "PreviewPrompt": "Preview Prompt",
 }
 

@@ -35,6 +35,12 @@ class RandomsPrompt:
                 "classify6": (buildOptionList(config.classifies, True, False), {
                     "default": DEFAULT_OPTION
                 }),
+                "classify7": (buildOptionList(config.classifies, True, False), {
+                    "default": DEFAULT_OPTION
+                }),
+                "classify8": (buildOptionList(config.classifies, True, False), {
+                    "default": DEFAULT_OPTION
+                }),
                 "seed": ("INT", { "default": 0, "min": 0, "max": 0xFFFFFFFFFFFFFFFF }),
                 # 启用
                 "enable": ("BOOLEAN", {"default": True})
@@ -49,7 +55,7 @@ class RandomsPrompt:
     FUNCTION = "randoms_prompt"
     CATEGORY = "PromptWrapper"
 
-    def randoms_prompt(self, language, classify1, classify2, classify3, classify4, classify5, classify6,
+    def randoms_prompt(self, language, classify1, classify2, classify3, classify4, classify5, classify6, classify7, classify8,
         seed=0, enable=True, input_prompt=""):
         
         prompt_words = []
@@ -61,7 +67,7 @@ class RandomsPrompt:
             # 获取Script的目录路径
             script_dir = os.path.dirname(os.path.abspath(__file__))  # Script directory
             language_dir = "zh" if language == "Chinese" else "en"
-            classifys = [classify1, classify2, classify3, classify4, classify5, classify6]
+            classifys = [classify1, classify2, classify3, classify4, classify5, classify6, classify7, classify8]
 
             for classify in classifys:
                 if classify != EMPTY_OPTION:
@@ -164,6 +170,28 @@ class RandomsWeightPrompt:
                     "step": 0.05,
                     "display": "slider",
                 }),
+                "classify7": (buildOptionList(config.classifies, True, False), {
+                    "default": DEFAULT_OPTION
+                }),
+                "classify7_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
+                "classify8": (buildOptionList(config.classifies, True, False), {
+                    "default": DEFAULT_OPTION
+                }),
+                "classify8_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
                 "seed": ("INT", { "default": 0, "min": 0, "max": 0xFFFFFFFFFFFFFFFF }),
                 # 启用
                 "enable": ("BOOLEAN", {"default": True})
@@ -180,6 +208,7 @@ class RandomsWeightPrompt:
 
     def randoms_weight_prompt(self, language, classify1, classify1_weight, classify2, classify2_weight, 
         classify3, classify3_weight, classify4, classify4_weight, classify5, classify5_weight, classify6, classify6_weight, 
+        classify7, classify7_weight, classify8, classify8_weight, 
         seed=0, enable=True, input_prompt=""):
         
         prompt_words = []
@@ -192,7 +221,8 @@ class RandomsWeightPrompt:
             script_dir = os.path.dirname(os.path.abspath(__file__))  # Script directory
             language_dir = "zh" if language == "Chinese" else "en"
             classify_weights = [(classify1, classify1_weight), (classify2, classify2_weight), (classify3, classify3_weight),
-                                (classify4, classify4_weight), (classify5, classify5_weight), (classify6, classify6_weight)]
+                                (classify4, classify4_weight), (classify5, classify5_weight), (classify6, classify6_weight),
+                                (classify7, classify7_weight), (classify8, classify8_weight)]
 
             for classify_weight in classify_weights:
                 classify = classify_weight[0]

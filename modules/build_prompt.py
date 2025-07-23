@@ -38,6 +38,14 @@ def buildPromptWeight(text, weight):
         return f"({text}:{round(weight, 2)})"
 
 
+# 构建组合提示词与权重
+def buildCombinePromptWeight(text1, text2, weight):
+    if weight == 1:
+        return f"[{text1}:{text2}]"
+    else:
+        return f"[{text1}:{text2}:{round(weight, 2)}]"
+
+
 # 构建分类数据
 def buildClassifyDatas(text):
     return text.replace(" ", "_") + "_datas"
@@ -217,8 +225,7 @@ class BuildPromptManager:
                 lens_angle = ""
         else:
             lens_angle = ""
-
-        nationality = ""
+        
         if nationality_1 != EMPTY_OPTION or nationality_2 != EMPTY_OPTION:
             if nationality_1 == RANDOM_OPTION:
                 nationality_1 = self.nationality_prompt.choice_prompt(seed)
@@ -226,11 +233,12 @@ class BuildPromptManager:
                 nationality_2 = self.nationality_prompt.choice_prompt(seed)
 
             if nationality_1 != EMPTY_OPTION and nationality_2 != EMPTY_OPTION:
-                nationality = f"[{nationality_1}:{nationality_2}:{round(nationality_mix_weight, 2)}]"
-                # nationality = buildPromptWeight(nationality, nationality_mix_weight)
+                nationality = buildCombinePromptWeight(nationality_1, nationality_2, nationality_mix_weight)
             else:
                 nationality = nationality_1 if nationality_1 != EMPTY_OPTION else nationality_2
                 nationality = buildPromptWeight(nationality, 1.05)
+        else:
+            nationality = ""
 
         if gender == RANDOM_OPTION:
             gender = self.gender_prompt.choice_prompt(seed)
@@ -286,7 +294,7 @@ class BuildPromptManager:
             ordinary_face = self.portrait_prompt.get_prompt("ordinary_face")
             ordinary_face = buildPromptWeight(ordinary_face, ordinary_face_weight)
         else:
-            ordinary_face = ''
+            ordinary_face = ""
         
         if ugly_face_weight > 0:
             ugly_face = self.portrait_prompt.get_prompt("ugly_face")

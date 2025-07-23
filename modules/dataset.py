@@ -28,7 +28,7 @@ class JsonlDataset(Dataset):
                         data = json.loads(line.strip())
                         sample_datas.append(data)
                     except:
-                        print("jsonl file parse error:", path)
+                        print("jsonl file parse error:{}, line:{}".format(path, line_num))
                         continue
         
         return sample_datas
@@ -42,7 +42,7 @@ class JsonlDataset(Dataset):
     def __getitem__(self, index):
     
         sample_data = self.sample_datas[index]
-        text = str(sample_data["text"])
+        text = str(sample_data["text"]) if "text" in sample_data else ""
         style = str(sample_data["style"]) if "style" in sample_data else None
         artist = str(sample_data["artist"]) if "artist" in sample_data else None
         
@@ -61,6 +61,10 @@ class JsonDataset(Dataset):
     
         sample_datas = {}
         with open(path, 'r', encoding='utf-8') as fp:
+            bom = fp.read(1)
+            if bom != "\ufeff":
+                fp.seek(0)
+            
             try:
                 sample_datas = json.load(fp)
             except:

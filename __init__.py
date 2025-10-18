@@ -69,5 +69,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "PreviewPrompt": "Preview Prompt",
 }
 
-__all__ = ['NODE_CLASS_MAPPINGS', 'NODE_DISPLAY_NAME_MAPPINGS'] 
+WEB_DIRECTORY = "./nodejs"
+
+__all__ = ['NODE_CLASS_MAPPINGS', 'NODE_DISPLAY_NAME_MAPPINGS', 'WEB_DIRECTORY'] 
 

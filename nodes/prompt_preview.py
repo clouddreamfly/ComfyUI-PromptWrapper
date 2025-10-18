@@ -27,6 +27,6 @@ class PreviewPrompt:
 
     def preview(self, text, unique_id=None, extra_pnginfo=None):
     
-        return {"ui": {"text": text}, "result": (text,)}
+        return {"ui": {"text": (text,)}, "result": (text,)}
     
 

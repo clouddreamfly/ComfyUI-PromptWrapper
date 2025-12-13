@@ -185,6 +185,9 @@ class BuildPromptManager:
         gender=EMPTY_OPTION,
         androgynous_weight=0,
         age=18,
+        age_weight=1,
+        body_part=EMPTY_OPTION,
+        body_part_weight=1,
         body_type=EMPTY_OPTION,
         body_type_weight=1,
         face_shape=EMPTY_OPTION,
@@ -254,13 +257,27 @@ class BuildPromptManager:
         else:
             androgynous = ""
 
-        if age == RANDOM_OPTION:
-            age = self.age_prompt.choice_prompt(seed)
-            age = buildPromptWeight(age, 1.05)
-        elif age != EMPTY_OPTION:
-            age = buildPromptWeight(age, 1.05)
+        if age_weight > 0:
+            if age == RANDOM_OPTION:
+                age = self.age_prompt.choice_prompt(seed)
+                age = buildPromptWeight(age, age_weight)
+            elif age != EMPTY_OPTION:
+                age = buildPromptWeight(age, age_weight)
+            else:
+                age = ""
         else:
             age = ""
+
+        if body_part_weight > 0:
+            if body_part == RANDOM_OPTION:
+                body_part = self.body_part_prompt.choice_prompt(seed)
+                body_part = buildPromptWeight(body_part, body_part_weight)
+            elif body_part != EMPTY_OPTION:
+                body_part = buildPromptWeight(body_part, body_part_weight)
+            else:
+                body_part = ""
+        else:
+            body_part = ""
 
         if body_type_weight > 0:
             if body_type == RANDOM_OPTION:
@@ -455,7 +472,7 @@ class BuildPromptManager:
 
         build_words = [
             lens_angle,
-            nationality, gender, androgynous, age, body_type,
+            nationality, gender, androgynous, age, body_part, body_type,
             face_shape, pretty_face, ordinary_face, ugly_face, facial_asymmetry, facial_expression,
             eyes_shape, eyes_color, eyebrows_style, eyebrows_color, eyelashs_style, eyelashs_color,
             nose_shape,

@@ -63,6 +63,28 @@ class PortraitPrompt:
                 "age": (buildOptionList(build_prompt_manager.age_prompt.get_dataset()), {
                     "default": DEFAULT_OPTION,
                 }),
+                # 年龄权重
+                "age_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
+                # 身体部分
+                "body_part": (buildOptionList(build_prompt_manager.body_part_prompt.get_dataset()), {
+                    "default": DEFAULT_OPTION,
+                }),
+                # 身体部分权重
+                "body_part_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
                 # 体型类型
                 "body_type": (buildOptionList(build_prompt_manager.body_type_prompt.get_dataset()), {
                     "default": DEFAULT_OPTION,
@@ -241,6 +263,9 @@ class PortraitPrompt:
             gender=EMPTY_OPTION,
             androgynous_weight=0,
             age=18,
+            age_weight=1,
+            body_part=EMPTY_OPTION,
+            body_part_weight=1,
             body_type=EMPTY_OPTION,
             body_type_weight=1,
             face_shape=EMPTY_OPTION,
@@ -295,6 +320,9 @@ class PortraitPrompt:
                 gender=gender,
                 androgynous_weight=androgynous_weight,
                 age=age,
+                age_weight=age_weight,
+                body_part=body_part,
+                body_part_weight=body_part_weight,
                 body_type=body_type,
                 body_type_weight=body_type_weight,
                 face_shape=face_shape,

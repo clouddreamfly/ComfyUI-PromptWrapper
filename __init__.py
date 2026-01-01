@@ -1,4 +1,4 @@
-from .nodes.prompt_translation import PromptTranslation
+from .nodes.prompt_translation import PromptTranslation, PromptTranslationHY
 from .nodes.prompt_generate import GeneratePrompt
 from .nodes.prompt_scenery import SceneryPrompt
 from .nodes.prompt_negative import NegativePrompt
@@ -21,6 +21,7 @@ from .nodes.prompt_randoms import RandomsPrompt, RandomsWeightPrompt
 
 NODE_CLASS_MAPPINGS = {
     "PromptTranslation": PromptTranslation,
+    "PromptTranslationHY": PromptTranslationHY,
     "GeneratePrompt": GeneratePrompt,
     "SceneryPrompt" : SceneryPrompt,
     "NegativePrompt" : NegativePrompt,
@@ -46,6 +47,7 @@ NODE_CLASS_MAPPINGS = {
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "PromptTranslation": "Prompt Translation",
+    "PromptTranslationHY": "Prompt Translation HY",
     "GeneratePrompt": "Generate Prompt",
     "SceneryPrompt": "Generate Scenery Prompt",
     "NegativePrompt": "Generate Negative Prompt",

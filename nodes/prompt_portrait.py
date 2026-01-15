@@ -793,6 +793,19 @@ class PortraitFashionPrompt:
                     "step": 0.05,
                     "display": "slider",
                 }),
+                # 耳朵装饰
+                "ears_decoration": (buildOptionList(build_prompt_manager.ears_decoration_prompt.get_dataset()), {
+                    "default": EMPTY_OPTION,
+                }),
+                # 耳朵装饰权重
+                "ears_decoration_weight": ("FLOAT", {
+                    "default": 1,
+                    "min": 0,
+                    "max": max_float_value,
+                    "round": 0.01,
+                    "step": 0.05,
+                    "display": "slider",
+                }),
                 # 颈部装饰
                 "neck_decoration": (buildOptionList(build_prompt_manager.neck_decoration_prompt.get_dataset()), {
                     "default": EMPTY_OPTION,
@@ -932,6 +945,8 @@ class PortraitFashionPrompt:
         gloves_weight=0,
         head_decoration=EMPTY_OPTION,
         head_decoration_weight=0,
+        ears_decoration=EMPTY_OPTION,
+        ears_decoration_weight=0,
         neck_decoration=EMPTY_OPTION,
         neck_decoration_weight=0,
         chest_decoration=EMPTY_OPTION,
@@ -989,6 +1004,8 @@ class PortraitFashionPrompt:
                 gloves_weight=gloves_weight,
                 head_decoration=head_decoration,
                 head_decoration_weight=head_decoration_weight,
+                ears_decoration=ears_decoration,
+                ears_decoration_weight=ears_decoration_weight,
                 neck_decoration=neck_decoration,
                 neck_decoration_weight=neck_decoration_weight,
                 chest_decoration=chest_decoration,

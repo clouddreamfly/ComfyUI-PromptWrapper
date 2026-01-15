@@ -607,6 +607,8 @@ class BuildPromptManager:
         gloves_weight=0,
         head_decoration=EMPTY_OPTION,
         head_decoration_weight=0,
+        ears_decoration=EMPTY_OPTION,
+        ears_decoration_weight=0,
         neck_decoration=EMPTY_OPTION,
         neck_decoration_weight=0,
         chest_decoration=EMPTY_OPTION,
@@ -697,6 +699,12 @@ class BuildPromptManager:
                 prompt_words.append(buildPromptWeight(self.head_decoration_prompt.choice_prompt(seed), head_decoration_weight))
             elif head_decoration != EMPTY_OPTION:
                 prompt_words.append(buildPromptWeight(head_decoration, head_decoration_weight))
+
+        if ears_decoration_weight > 0:
+            if ears_decoration == RANDOM_OPTION:
+                prompt_words.append(buildPromptWeight(self.ears_decoration_prompt.choice_prompt(seed), ears_decoration_weight))
+            elif ears_decoration != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(ears_decoration, ears_decoration_weight))
 
         if neck_decoration_weight > 0:
             if neck_decoration == RANDOM_OPTION:

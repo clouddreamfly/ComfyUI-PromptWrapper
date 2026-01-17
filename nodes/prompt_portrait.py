@@ -13,8 +13,8 @@ class PortraitPrompt:
         return {
             "required": {
                 # 语言选择
-                "language": (["Chinese", "English"],{
-                    "default": "Chinese",
+                "language": (config.languages, {
+                    "default": config.languages[0]
                 }),
                 # 镜头角度
                 "lens_angle": (buildOptionList(build_prompt_manager.lens_angle_prompt.get_dataset()), {
@@ -299,8 +299,8 @@ class PortraitPrompt:
             input_prompt=""
         ):
 
-        language = "zh" if language == "Chinese" else "en"
-        build_prompt_manager.reload_build_prompt_datas(language)
+        language_dir = config.assets[language] if language in config.assets else config.assets["default"]
+        build_prompt_manager.reload_build_prompt_datas(language_dir)
 
         prompt_words = []
 
@@ -373,8 +373,8 @@ class PortraitSkinPrompt:
         return {
             "required": {
                 # 语言选择
-                "language": (["Chinese", "English"],{
-                    "default": "Chinese",
+                "language": (config.languages, {
+                    "default": config.languages[0]
                 }),
                 # 皮肤
                 "skin": (buildOptionList(build_prompt_manager.skin_prompt.get_dataset()), {
@@ -579,8 +579,9 @@ class PortraitSkinPrompt:
             preset_prompt="",
             input_prompt=""
     ):
-        language = "zh" if language == "Chinese" else "en"
-        build_prompt_manager.reload_build_prompt_datas(language)
+        
+        language_dir = config.assets[language] if language in config.assets else config.assets["default"]
+        build_prompt_manager.reload_build_prompt_datas(language_dir)
 
         prompt_words = []
 
@@ -634,8 +635,8 @@ class PortraitFashionPrompt:
         return {
             "required": {
                 # 语言选择
-                "language": (["Chinese", "English"],{
-                    "default": "Chinese",
+                "language": (config.languages, {
+                    "default": config.languages[0]
                 }),
                 # 衣服
                 "clothes": (buildOptionList(build_prompt_manager.clothes_prompt.get_dataset()), {
@@ -967,8 +968,8 @@ class PortraitFashionPrompt:
         input_prompt=""
     ):
         
-        language = "zh" if language == "Chinese" else "en"
-        build_prompt_manager.reload_build_prompt_datas(language)
+        language_dir = config.assets[language] if language in config.assets else config.assets["default"]
+        build_prompt_manager.reload_build_prompt_datas(language_dir)
 
         prompt_words = []
 
@@ -1044,8 +1045,8 @@ class PortraitPosePrompt:
         return {
             "required": {
                 # 语言选择
-                "language": (["Chinese", "English"],{
-                    "default": "Chinese",
+                "language": (config.languages, {
+                    "default": config.languages[0]
                 }),
                 # 姿态
                 "pose": (buildOptionList(build_prompt_manager.pose_prompt.get_dataset()), {
@@ -1212,8 +1213,8 @@ class PortraitPosePrompt:
         input_prompt=""
     ):
         
-        language = "zh" if language == "Chinese" else "en"
-        build_prompt_manager.reload_build_prompt_datas(language)
+        language_dir = config.assets[language] if language in config.assets else config.assets["default"]
+        build_prompt_manager.reload_build_prompt_datas(language_dir)
 
         prompt_words = []
 
@@ -1267,8 +1268,8 @@ class PortraitCosmeticPrompt:
         return {
             "required": {
                 # 语言选择
-                "language": (["Chinese", "English"],{
-                    "default": "Chinese"
+                "language": (config.languages, {
+                    "default": config.languages[0]
                 }),
                 # 化妆风格
                 "makeup_style": (buildOptionList(build_prompt_manager.makeup_style_prompt.get_dataset()), {
@@ -1388,8 +1389,8 @@ class PortraitCosmeticPrompt:
         input_prompt=""
     ):
         
-        language = "zh" if language == "Chinese" else "en"
-        build_prompt_manager.reload_build_prompt_datas(language)
+        language_dir = config.assets[language] if language in config.assets else config.assets["default"]
+        build_prompt_manager.reload_build_prompt_datas(language_dir)
 
         prompt_words = []
 

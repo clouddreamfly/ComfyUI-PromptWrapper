@@ -111,7 +111,7 @@ class BuildPrompt:
         return prompt
 
 
-    def generate_prompt(self, seed, styles="", artists=""):
+    def generate_prompt(self, seed):
         
         length = len(self._dataset)
         if length == 0:
@@ -937,7 +937,65 @@ class BuildPromptManager:
 
         return output_prompt
 
+    # 生成绘画艺术提示词
+    def generate_draw_artist_prompt(self,
+        draw_artist_1=EMPTY_OPTION,
+        draw_artist_1_weight=1,
+        draw_artist_2=EMPTY_OPTION,
+        draw_artist_2_weight=0,
+        draw_artist_3=EMPTY_OPTION,
+        draw_artist_3_weight=0,
+        draw_artist_4=EMPTY_OPTION,
+        draw_artist_4_weight=0,
+        draw_artist_5=EMPTY_OPTION,
+        draw_artist_5_weight=0,
+        seed=0
+    ):
+        prompt_words = []
 
+        if draw_artist_1_weight > 0:
+            if draw_artist_1 == RANDOM_OPTION:
+                draw_artist_1 = self.draw_artist_prompt.choice_prompt(seed)
+                prompt_words.append(buildPromptWeight(draw_artist_1, draw_artist_1_weight))
+            elif draw_artist_1 != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(draw_artist_1, draw_artist_1_weight))
+
+        if draw_artist_2_weight > 0:
+            if draw_artist_2 == RANDOM_OPTION:
+                draw_artist_2 = self.draw_artist_prompt.choice_prompt(seed + 1)
+                prompt_words.append(buildPromptWeight(draw_artist_2, draw_artist_2_weight))
+            elif draw_artist_2 != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(draw_artist_2, draw_artist_2_weight))
+
+        if draw_artist_3_weight > 0:
+            if draw_artist_3 == RANDOM_OPTION:
+                draw_artist_3 = self.draw_artist_prompt.choice_prompt(seed + 2)
+                prompt_words.append(buildPromptWeight(draw_artist_3, draw_artist_3_weight))
+            elif draw_artist_3 != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(draw_artist_3, draw_artist_3_weight))
+
+        if draw_artist_4_weight > 0:
+            if draw_artist_4 == RANDOM_OPTION:
+                draw_artist_4 = self.draw_artist_prompt.choice_prompt(seed + 3)
+                prompt_words.append(buildPromptWeight(draw_artist_4, draw_artist_4_weight))
+            elif draw_artist_4 != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(draw_artist_4, draw_artist_4_weight))
+
+        if draw_artist_5_weight > 0:
+            if draw_artist_5 == RANDOM_OPTION:
+                draw_artist_5 = self.draw_artist_prompt.choice_prompt(seed + 4)
+                prompt_words.append(buildPromptWeight(draw_artist_5, draw_artist_5_weight))
+            elif draw_artist_5 != EMPTY_OPTION:
+                prompt_words.append(buildPromptWeight(draw_artist_5, draw_artist_5_weight))
+
+        output_prompt = ""
+        if len(prompt_words) > 0:
+            output_prompt = ', '.join(prompt_words)
+
+        return output_prompt
+    
+    
+    
     # 生成绘画风格提示词
     def generate_draw_style_prompt(self,
         draw_style_1=EMPTY_OPTION,

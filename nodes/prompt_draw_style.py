@@ -13,8 +13,8 @@ class DrawStylePrompt:
         return {
             "required": {
                 # 语言选择
-                "language": (["Chinese", "English"],{
-                    "default": "Chinese",
+                "language": (config.languages, {
+                    "default": config.languages[0]
                 }),
                 # 绘画风格
                 "draw_style_1": (buildOptionList(build_prompt_manager.draw_style_prompt.get_dataset()), {
@@ -121,8 +121,8 @@ class DrawStylePrompt:
         input_prompt=""
     ):
         
-        language = "zh" if language == "Chinese" else "en"
-        build_prompt_manager.reload_build_prompt_datas(language)
+        language_dir = config.assets[language] if language in config.assets else config.assets["default"]
+        build_prompt_manager.reload_build_prompt_datas(language_dir)
 
         prompt_words = []
 

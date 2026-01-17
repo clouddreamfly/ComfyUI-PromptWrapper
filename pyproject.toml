@@ -1,7 +1,7 @@
 [project]
 name = "ComfyUI-PromptWrapper"
 description = "ComfyUI nodes for PromptWrapper, Mainly for prompt word translation, Chinese translation into English or English translation into Chinese."
-version = "1.2.0"
+version = "1.3.0"
 license = {file = "LICENSE"}
 
 [project.urls]

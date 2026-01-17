@@ -13,8 +13,8 @@ class LightPrompt:
         return {
             "required": {
                 # 语言选择
-                "language": (["Chinese", "English"],{
-                    "default": "Chinese",
+                "language": (config.languages, {
+                    "default": config.languages[0],
                 }),
                 # 光的类型
                 "light_type": (buildOptionList(build_prompt_manager.light_type_prompt.get_dataset()), {
@@ -91,8 +91,8 @@ class LightPrompt:
         input_prompt=""
     ):
         
-        language = "zh" if language == "Chinese" else "en"
-        build_prompt_manager.reload_build_prompt_datas(language)
+        language_dir = config.assets[language] if language in config.assets else config.assets["default"]
+        build_prompt_manager.reload_build_prompt_datas(language_dir)
 
         prompt_words = []
 

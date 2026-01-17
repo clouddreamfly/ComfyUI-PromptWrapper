@@ -1,5 +1,6 @@
 import os
 from ..modules.build_prompt import BuildPrompt
+from ..modules.config import config
 
 
 
@@ -10,7 +11,9 @@ class NegativePrompt:
     def INPUT_TYPES(s):
         return {
             "required": {
-                "language": (["Chinese", "English"],),
+                "language": (config.languages, {
+                    "default": config.languages[0]
+                }),
                 "seed": ("INT", {"default": 0, "min": 0, "max": 0xFFFFFFFFFFFFFFFF}),
                 "preset_prompt": ("STRING", {
                     "multiline": True,
@@ -28,7 +31,7 @@ class NegativePrompt:
  
         # 获取Script的目录路径
         script_dir = os.path.dirname(os.path.abspath(__file__))  # Script directory
-        language_dir = "zh" if language == "Chinese" else "en"
+        language_dir = config.assets[language] if language in config.assets else config.assets["default"]
         data_file = os.path.join(script_dir, "..", "assets", language_dir, "negative_datas.jsonl")
 
         build = BuildPrompt(data_file)

@@ -1,4 +1,13 @@
 {
+    "languages": [
+        "Chinese",
+        "English"
+    ],
+    "assets": {
+        "default": "zh",
+        "Chinese": "zh",
+        "English": "en"
+    },
     "classifies": [
         "action",
         "age",

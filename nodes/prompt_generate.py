@@ -13,8 +13,8 @@ class GeneratePrompt:
     def INPUT_TYPES(s):
         return {
             "required": {
-                "language": (["Chinese", "English"], {
-                    "default": "Chinese"
+                "language": (config.languages, {
+                    "default": config.languages[0]
                 }),
                 "classify": (buildOptionList(config.classifies, True, False), {
                     "default": DEFAULT_OPTION
@@ -49,7 +49,7 @@ class GeneratePrompt:
         if classify != EMPTY_OPTION:
             # 获取Script的目录路径
             script_dir = os.path.dirname(os.path.abspath(__file__))  # Script directory
-            language_dir = "zh" if language == "Chinese" else "en"
+            language_dir = config.assets[language] if language in config.assets else config.assets["default"]
         
             classify_datas = buildClassifyDatas(classify)
             file_name = f"{classify_datas}.jsonl"

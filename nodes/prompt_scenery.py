@@ -4,25 +4,6 @@ from ..modules.build_prompt import EMPTY_OPTION, RANDOM_OPTION, DEFAULT_OPTION
 from ..modules.config import config
 
 
-styles = [
-    EMPTY_OPTION, RANDOM_OPTION
-]
-
-artists = [
-    EMPTY_OPTION, RANDOM_OPTION, "popular", "greg mode", "3D", "abstract", "angular",
-    "anime", "architecture", "art nouveau", "art deco", "baroque", "bauhaus", "cartoon",
-    "character", "children's illustration", "cityscape", "cinema", "clean", "cloudscape",
-    "collage", "colorful", "comics", "cubism", "dark", "detailed", "digital", "expressionism",
-    "fantasy", "fashion", "fauvism", "figurativism", "gore", "graffiti", "graphic design",
-    "high contrast", "horror", "impressionism", "installation", "landscape", "light",
-    "line drawing", "low contrast",	"luminism",	"magical realism", "manga",	"melanin",
-    "messy", "monochromatic", "nature", "nudity", "photography", "pop art",	"portrait",
-    "primitivism", "psychedelic", "realism", "renaissance",	"romanticism",
-    "scene", "sci-fi", "sculpture",	"seascape",	"space", "stained glass", "still life",
-    "storybook realism", "street art", "streetscape", "surrealism", "symbolism", "textile",
-    "ukiyo-e", "vibrant", "watercolor", "whimsical"
-]
-
 
 
 # Scenery Prompt 
@@ -33,11 +14,9 @@ class SceneryPrompt:
         return {
             "required": {
                 # 选择语言
-                "language": (["Chinese", "English"], {
-                    "default": "Chinese"
+                "language": (config.languages, {
+                    "default": config.languages[0]
                 }),
-                "style": (styles, { "default": DEFAULT_OPTION }),
-                "artist": (artists, { "default": DEFAULT_OPTION }),
                 "seed": ("INT", { "default": 0, "min": 0, "max": 0xFFFFFFFFFFFFFFFF }),
                 # 预设前缀提示词
                 "preset_prefix": ("STRING", {
@@ -60,19 +39,16 @@ class SceneryPrompt:
     FUNCTION = "generate_prompt"
     CATEGORY = "PromptWrapper"
 
-    def generate_prompt(self, language, style, artist, seed,
+    def generate_prompt(self, language, seed,
         preset_prefix="", preset_suffix="", input_prompt=""):
- 
-        styles = (style,)
-        artists = (artist,)
         
         # 获取Script的目录路径
         script_dir = os.path.dirname(os.path.abspath(__file__))  # Script directory
-        language_dir = "zh" if language == "Chinese" else "en"
+        language_dir = config.assets[language] if language in config.assets else config.assets["default"]
         data_file = os.path.join(script_dir, "..", "assets", language_dir, "scenery_datas.jsonl")
 
         build = BuildPrompt(data_file)
-        scenery_prompt = build.generate_prompt(seed, styles, artists)
+        scenery_prompt = build.generate_prompt(seed)
 
         prompt_words = []
 

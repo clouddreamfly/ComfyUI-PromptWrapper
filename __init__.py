@@ -3,7 +3,8 @@ from .nodes.prompt_generate import GeneratePrompt
 from .nodes.prompt_scenery import SceneryPrompt
 from .nodes.prompt_negative import NegativePrompt
 from .nodes.prompt_light import LightPrompt
-from .nodes.prompt_style import DrawStylePrompt
+from .nodes.prompt_draw_artist import DrawArtistPrompt
+from .nodes.prompt_draw_style import DrawStylePrompt
 from .nodes.prompt_portrait import PortraitPrompt
 from .nodes.prompt_portrait import PortraitSkinPrompt
 from .nodes.prompt_portrait import PortraitFashionPrompt
@@ -26,6 +27,7 @@ NODE_CLASS_MAPPINGS = {
     "SceneryPrompt" : SceneryPrompt,
     "NegativePrompt" : NegativePrompt,
     "LightPrompt" : LightPrompt,
+    "DrawArtistPrompt" : DrawArtistPrompt,
     "DrawStylePrompt" : DrawStylePrompt,
     "PortraitPrompt": PortraitPrompt,
     "PortraitSkinPrompt": PortraitSkinPrompt,
@@ -52,6 +54,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SceneryPrompt": "Generate Scenery Prompt",
     "NegativePrompt": "Generate Negative Prompt",
     "LightPrompt": "Generate Light Prompt",
+    "DrawArtistPrompt" : "Generate Draw Artist Prompt",
     "DrawStylePrompt" : "Generate Draw Style Prompt",
     "PortraitPrompt": "Portrait Prompt",
     "PortraitSkinPrompt": "Portrait Skin Prompt",

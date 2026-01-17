@@ -14,8 +14,8 @@ class RandomsPrompt:
         return {
             "required": {
                 # 选择语言
-                "language": (["Chinese", "English"], {
-                    "default": "Chinese"
+                "language": (config.languages, {
+                    "default": config.languages[0]
                 }),
                 "classify1": (buildOptionList(config.classifies, True, False), {
                     "default": DEFAULT_OPTION
@@ -66,7 +66,7 @@ class RandomsPrompt:
         if enable == True:
             # 获取Script的目录路径
             script_dir = os.path.dirname(os.path.abspath(__file__))  # Script directory
-            language_dir = "zh" if language == "Chinese" else "en"
+            language_dir = config.assets[language] if language in config.assets else config.assets["default"]
             classifys = [classify1, classify2, classify3, classify4, classify5, classify6, classify7, classify8]
 
             for classify in classifys:
@@ -101,8 +101,8 @@ class RandomsWeightPrompt:
         return {
             "required": {
                 # 选择语言
-                "language": (["Chinese", "English"], {
-                    "default": "Chinese"
+                "language": (config.languages, {
+                    "default": config.languages[0]
                 }),
                 "classify1": (buildOptionList(config.classifies, True, False), {
                     "default": DEFAULT_OPTION
@@ -219,7 +219,7 @@ class RandomsWeightPrompt:
         if enable == True:
             # 获取Script的目录路径
             script_dir = os.path.dirname(os.path.abspath(__file__))  # Script directory
-            language_dir = "zh" if language == "Chinese" else "en"
+            language_dir = config.assets[language] if language in config.assets else config.assets["default"]
             classify_weights = [(classify1, classify1_weight), (classify2, classify2_weight), (classify3, classify3_weight),
                                 (classify4, classify4_weight), (classify5, classify5_weight), (classify6, classify6_weight),
                                 (classify7, classify7_weight), (classify8, classify8_weight)]
